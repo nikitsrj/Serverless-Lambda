@@ -3,7 +3,7 @@ aws.config.region = 'us-east-1';
 var ec2 = new aws.EC2();  
 var now = new Date();  
 date = now.toISOString().substring(0, 10)  
-hours = now.getHours()  
+hours = now.getHours()   
 minutes = now.getMinutes()  
 exports.handler = function(event, context) {  
     var instanceparams = {
@@ -12,6 +12,11 @@ exports.handler = function(event, context) {
             Values: [
                 'yes'
             ]
+        },{
+            Name: 'tag:Team',
+            Values: [
+                'TEAM_NAME'
+                ]
         }]
     }
     ec2.describeInstances(instanceparams, function(err, data) {
