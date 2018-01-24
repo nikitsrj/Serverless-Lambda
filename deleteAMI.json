@@ -15,7 +15,12 @@ ec2.describeImages({
         Values: [
             'yes'
         ]
-    }]
+    },{
+            Name: 'tag:Team',
+            Values: [
+                'TEAM_NAME'
+                ]
+        }]
 
 }, function(err, data) {
     if (err) console.log(err, err.stack);
